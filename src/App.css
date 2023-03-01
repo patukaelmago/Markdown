@@ -1,74 +1,50 @@
 * {
-  background-color: grey;
-}
-.container {
-  display: flex;
-  justify-content: space-between;
-  margin: 0 auto;
-  max-width: 800px;
-  height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.editor-container {
-  flex: 1;
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+}
+
+.editor-container,
+.preview-container {
+  width: 50%;
+  height: 100%;
+}
+
+.editor-container {
+  border-right: 1px solid #ccc;
 }
 
 .editor {
   width: 100%;
   height: 100%;
-  padding: 1rem;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 1.5;
   border: none;
-  border-radius: 0.25rem;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  font-size: 1rem;
-}
-
-.preview-container {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  outline: none;
+  resize: none;
 }
 
 .preview {
   width: 100%;
   height: 100%;
-  padding: 1rem;
-  border: none;
-  border-radius: 0.25rem;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  color: aqua;
-  background-color: grey;
-  font-size: 1rem;
-  overflow-y: scroll;
-}
-
-@media only screen and (max-width: 600px) {
-  .container {
-    flex-direction: column;
-    height: auto;
-  }
-
-  .editor-container,
-  .preview-container {
-    flex: none;
-    width: 100%;
-    height: 50vh;
-  }
-}
-
-textarea {
-  width: 100%;
-  height: 300px; /* Puedes ajustar la altura según tus necesidades */
-  box-sizing: border-box;
   padding: 10px;
   font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+  line-height: 1.5;
+  overflow-y: auto;
 }
+
 
 
 
