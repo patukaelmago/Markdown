@@ -1,23 +1,52 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState, useEffect } from 'react';
+import {marked} from 'marked';
 
 function App() {
+  const [text, setText] = useState(`
+    # H1
+    ## H2
+    [title](https://www.example.com)
+    \`code\`
+    \`\`\`
+    {
+      "firstName": "John",
+      "lastName": "Smith",
+      "age": 25
+    }
+    \`\`\`
+
+    - First item
+    - Second item
+    - Third item
+
+    > blockquote
+
+    ![alt text](image.jpg)
+
+    **bold text**
+  `);
+
+  marked.setOptions({
+    breaks: true
+  })
+
+  function handleChange(event) {
+    setText(event.target.value);
+  }
+
+  useEffect(() => {
+    document.getElementById('preview').innerHTML = marked(text);
+  }, [text]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container'>
+      <div className='editor-container'>
+        <textarea id="editor" className='editor' value={text} onChange={handleChange}></textarea>
+      </div>
+      <div className='preview-container'>
+        <div id="preview" className='preview'></div>
+      </div>
     </div>
   );
 }
